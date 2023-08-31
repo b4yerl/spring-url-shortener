@@ -1,9 +1,10 @@
 package com.github.b4yerl.shortener.controller;
 
 import com.github.b4yerl.shortener.dto.UrlRequest;
-import com.github.b4yerl.shortener.model.ShortUrl;
+import com.github.b4yerl.shortener.dto.UrlResponse;
 import com.github.b4yerl.shortener.service.ShortUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -24,7 +25,8 @@ public class ShortUrlController {
 
     @PostMapping()
     @ResponseBody
-    public ShortUrl shortenUrl(@RequestBody UrlRequest request) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public UrlResponse shortenUrl(@RequestBody UrlRequest request) {
         String originalUrl = request.getOriginalUrl();
         return shortUrlService.shortIt(originalUrl);
     }

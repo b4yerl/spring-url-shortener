@@ -14,6 +14,15 @@ public class ShortUrl {
     @Column(name = "original", nullable = false)
     private String originalUrl;
 
+    public ShortUrl() {
+
+    }
+
+    public ShortUrl(String shortUrl, String originalUrl) {
+        this.shortUrl = shortUrl;
+        this.originalUrl = originalUrl;
+    }
+
     public String getShortUrl() {
         return shortUrl;
     }
